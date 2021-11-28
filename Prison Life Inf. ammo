@@ -1,16 +1,18 @@
-while wait(1) do
-for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-if v:FindFirstChild("GunStates") then
-local a =  require(v.GunStates)
-a.Spread = 0
-a.FireRate = 0
-a.MaxAmmo = math.huge
-a.Damage = math.huge
-a.ReloadTime = 0
-a.Range = math.huge
-a.StoredAmmo = math.huge
-else
-return v
-end
-end
+workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS:findFirstChild('M9', true).ITEMPICKUP)
+wait(0.1)
+workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS:findFirstChild('Remington 870', true).ITEMPICKUP)
+wait(0.1)
+workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS:findFirstChild('AK-47', true).ITEMPICKUP)
+for i, v in next, debug.getregistry() do 
+    if type(v) == "table" then 
+        if v.Bullets then 
+            v.AutoFire = true
+            v.FireRate = 0
+            v.Bullets = 20
+			v.Range = math.huge
+            v.MaxAmmo = math.huge
+			v.CurrentAmmo = math.huge
+			v.StoredAmmo = math.huge
+        end
+    end
 end
